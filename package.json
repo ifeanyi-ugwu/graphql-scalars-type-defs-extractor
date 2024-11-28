@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/graphql-scalars-type-defs-extractor.git"
+    "url": "git+https://github.com/ifeanyi-ugwu/graphql-scalars-type-defs-extractor.git"
   },
   "keywords": [
     "graphql",
@@ -25,9 +25,9 @@
   "author": "ifeanyi ugwu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yourusername/graphql-scalars-type-defs-extractor/issues"
+    "url": "https://github.com/ifeanyi-ugwu/graphql-scalars-type-defs-extractor/issues"
   },
-  "homepage": "https://github.com/yourusername/graphql-scalars-type-defs-extractorr#readme",
+  "homepage": "https://github.com/ifeanyi-ugwu/graphql-scalars-type-defs-extractorr#readme",
   "files": [
     "dist",
     "bin"
