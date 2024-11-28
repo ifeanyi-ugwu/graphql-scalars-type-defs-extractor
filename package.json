@@ -1,0 +1,42 @@
+{
+  "name": "graphql-scalars-type-defs-extractor",
+  "version": "1.0.0",
+  "description": "Utility to extract scalar type definitions from graphql-scalars",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "graphql-scalars-type-defs-extractor": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/graphql-scalars-type-defs-extractor.git"
+  },
+  "keywords": [
+    "graphql",
+    "scalars",
+    "type-extraction",
+    "codegen"
+  ],
+  "author": "ifeanyi ugwu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/graphql-scalars-type-defs-extractor/issues"
+  },
+  "homepage": "https://github.com/yourusername/graphql-scalars-type-defs-extractorr#readme",
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "graphql-scalars": "^1.24.0"
+  }
+}
