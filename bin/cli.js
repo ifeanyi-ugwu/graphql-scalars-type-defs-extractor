@@ -38,10 +38,11 @@ const argv = yargs(hideBin(process.argv))
 
 try {
   // Extract scalar type definitions
-  const generatedPath = extractScalarTypeDefs(
-    argv.output,
-    argv.scalars?.length ? argv.scalars : undefined
-  );
+  const generatedPath = extractScalarTypeDefs({
+    output: argv.output,
+    scalars: argv.scalars?.length ? argv.scalars : undefined,
+    verbose: argv.verbose,
+  });
 
   // Conditional logging based on verbose flag
   if (argv.verbose) {

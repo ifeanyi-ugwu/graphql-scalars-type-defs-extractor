@@ -2,13 +2,24 @@ import { writeFileSync, mkdirSync, existsSync } from "fs";
 import path from "path";
 import { typeDefs as graphqlScalarsTypeDefs } from "graphql-scalars";
 
+export interface ExtractScalarTypesOptions {
+  output?: string;
+  scalars?: string[];
+  verbose?: boolean;
+}
+
 // Function to extract and write scalar type definitions
 export function extractScalarTypeDefs(
-  outputPath: string = "scalar-types.graphql",
-  scalarsToExtract?: string[] // Optional array of scalar names
-) {
+  options: ExtractScalarTypesOptions = {}
+): string {
+  const {
+    output = "scalar-types.graphql",
+    scalars: scalarsToExtract,
+    verbose = false,
+  } = options;
+
   // Ensure the output directory exists
-  const outputDir = path.dirname(outputPath);
+  const outputDir = path.dirname(output);
   if (!existsSync(outputDir)) {
     mkdirSync(outputDir, { recursive: true });
   }
@@ -48,7 +59,7 @@ export function extractScalarTypeDefs(
   }
 
   // Determine the file extension
-  const fileExt = path.extname(outputPath);
+  const fileExt = path.extname(output);
 
   // Decide on the content based on the file extension
   let scalarTypeDefsContent: string;
@@ -68,20 +79,14 @@ export const scalarTypeDefs = gql\`
   }
 
   // Write the scalar type definitions to the specified file
-  writeFileSync(outputPath, scalarTypeDefsContent);
+  writeFileSync(output, scalarTypeDefsContent);
 
-  console.log(`Scalar type definitions extracted to: ${outputPath}`);
+  if (verbose) {
+    console.log(`Scalar type definitions extracted to: ${output}`);
+    if (scalarsToExtract) {
+      console.log(`Extracted scalars: ${scalarsToExtract.join(", ")}`);
+    }
+  }
 
-  return outputPath;
-}
-
-// If run directly as a script
-if (require.main === module) {
-  // Default to .graphql extension if not specified
-  const outputPath = process.argv[2] || "scalar-types.graphql";
-  const scalarsToExtract = process.argv.slice(3); // Get scalars from CLI arguments
-  extractScalarTypeDefs(
-    outputPath,
-    scalarsToExtract.length ? scalarsToExtract : undefined
-  );
+  return output;
 }
