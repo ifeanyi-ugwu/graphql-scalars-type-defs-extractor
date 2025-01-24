@@ -83,8 +83,12 @@ export const scalarTypeDefs = gql\`
 
   if (verbose) {
     console.log(`Scalar type definitions extracted to: ${output}`);
-    if (scalarsToExtract) {
-      console.log(`Extracted scalars: ${scalarsToExtract.join(", ")}`);
+    if (filteredScalars.length > 0) {
+      console.log(
+        `Extracted scalars: ${filteredScalars
+          .map(extractScalarName)
+          .join(", ")}`
+      );
     }
   }
 
